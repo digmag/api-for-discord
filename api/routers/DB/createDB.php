@@ -10,8 +10,14 @@
         echo "ERROR";
         exit;
     }
-    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.user(id INT AUTO_INCREMENT PRIMARY KEY,name varchar(255),email varchar(255) UNIQUE,password varchar(255),is_active TINYINT(1));";
+    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.user(id INT AUTO_INCREMENT PRIMARY KEY,name varchar(255),email varchar(255) UNIQUE,hash varchar(255),password varchar(255));";
     if($conn -> query($sql)){}
+    else{
+        echo "ERROR " . $conn->error;
+        exit;
+    }
+    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.activeTokens(id INT,value varchar(255),validTime bigint)";
+    if($conn->query($sql)){}
     else{
         echo "ERROR " . $conn->error;
         exit;
