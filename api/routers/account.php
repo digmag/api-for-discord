@@ -10,6 +10,10 @@
                     include_once 'UserFunctions/login.php';
                     login($requestData->body);
                 }
+                if($urlList[1] == "logout"){
+                    include_once 'UserFunctions/logout.php';
+                    logout(explode(" ", getallheaders()['Authorization'])[1]);
+                }
                 break;
             
             default:
