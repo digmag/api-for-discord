@@ -22,4 +22,28 @@
         echo "ERROR " . $conn->error;
         exit;
     }
+    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.chat(id INT AUTO_INCREMENT PRIMARY KEY, name varchar(255));";
+    if($conn->query($sql)){}
+    else{
+        echo "ERROR " . $conn->error;
+        exit;
+    }
+    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.chattouser(chatid INT, userid INT);";
+    if($conn->query($sql)){}
+    else{
+        echo "ERROR " . $conn->error;
+        exit;
+    }
+    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.message(messageid INT AUTO_INCREMENT PRIMARY KEY, chatid INT, Text text);";
+    if($conn->query($sql)){}
+    else{
+        echo "ERROR " . $conn->error;
+        exit;
+    }
+    $sql = "CREATE TABLE IF NOT EXISTS DB_FOR_PROJ.messagetochat(messageid INT, chatid INT);";
+    if($conn->query($sql)){}
+    else{
+        echo "ERROR " . $conn->error;
+        exit;
+    }
 ?>
